@@ -45,7 +45,7 @@ app.use(session({
 // CORS
 const allowedOrigins = [
   'http://localhost:4000',
-  'https://stupendous-khapse-5427d6.netlify.app/'
+  'https://stupendous-khapse-5427d6.netlify.app'
 ];
 
 app.use(cors({
