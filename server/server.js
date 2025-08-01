@@ -15,17 +15,21 @@ const config = require('./config');  // Importas configuración
 
 const app = express();
 
-const PORT = config.PORT;
+const PORT = config.PORT || 3000;
 const JWT_SECRET = config.JWT_SECRET || 'mi_secreto_seguro_jwt'; // Por si acaso
 const JWT_EXPIRES_IN = config.JWT_EXPIRES_IN || '1d';            // Por si acaso
 
-// CORS
+// CORS configurado para frontend en Netlify
 const corsOptions = {
   origin: ['https://effulgent-quokka-899a84.netlify.app'],
   credentials: true,
 };
 
 app.use(cors(corsOptions));
+
+// Middleware para entender JSON y urlencoded en requests
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Conexión a MongoDB
 mongoose.connect(config.MONGODB_URI)
