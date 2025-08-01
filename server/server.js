@@ -21,7 +21,7 @@ const JWT_EXPIRES_IN = config.JWT_EXPIRES_IN || '1d';            // Por si acaso
 
 // CORS configurado para frontend en Netlify
 const corsOptions = {
-  origin: ['https://stupendous-khapse-5427d6.netlify.app/'],
+  origin: ['https://stupendous-khapse-5427d6.netlify.app'],
   credentials: true,
 };
 
