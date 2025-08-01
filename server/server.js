@@ -20,15 +20,12 @@ const JWT_SECRET = config.JWT_SECRET || 'mi_secreto_seguro_jwt'; // Por si acaso
 const JWT_EXPIRES_IN = config.JWT_EXPIRES_IN || '1d';            // Por si acaso
 
 // CORS
-app.use(cors(config.CORS_OPTIONS));
+const corsOptions = {
+  origin: ['https://effulgent-quokka-899a84.netlify.app'],
+  credentials: true,
+};
 
-app.use(session({
-  ...config.SESSION_OPTIONS,
-  store: MongoStore.create({ mongoUrl: config.MONGODB_URI }),
-}));
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cors(corsOptions));
 
 // Conexión a MongoDB
 mongoose.connect(config.MONGODB_URI)
